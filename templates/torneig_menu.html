@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Menú de tornejos</title></head>
+<body>
+<h1>Selecciona un torneig de Brawl Stars</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Veure classificació</button>
+</form>
+
+<hr>
+
+<h2>Tornejos disponibles:</h2>
+<ul>
+    {% for torneig in tornejos %}
+        <li><a href="{% url 'classificacio' torneig.id %}">{{ torneig }}</a></li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
+
